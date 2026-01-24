@@ -1,0 +1,5 @@
+configs.env
+.idea/
+.venv/
+app/__pycache__/
+app/controller/__pycache__/

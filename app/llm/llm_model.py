@@ -7,9 +7,9 @@ class LLMModel(ABC):
     """
 
     @abstractmethod
-    def initialize_model(self, temperature: int = 0):
+    def initialize_model(self) -> None:
         pass
 
     @abstractmethod
-    def get_post_classification_template(self):
+    def get_post_classification_template(self) -> string:
         pass
