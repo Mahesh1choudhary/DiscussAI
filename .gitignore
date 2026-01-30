@@ -1,5 +1,6 @@
-configs.env
 .idea/
 .venv/
-app/__pycache__/
-app/controller/__pycache__/
+app_v1/__pycache__/
+app_v1/controller/__pycache__/
+app_v1/config/secret_config.env
+DiscussAI.iml

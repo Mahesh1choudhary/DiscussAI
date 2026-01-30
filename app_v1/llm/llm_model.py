@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class LLMModel(ABC):
     """
-    Abstract class for LLM models. To give freedom of LLM and prompt changes for models
+    Abstract class for LLM models. To give freedom of model changes and prompt changes within models
     """
 
     @abstractmethod
@@ -11,5 +11,5 @@ class LLMModel(ABC):
         pass
 
     @abstractmethod
-    def get_post_classification_template(self) -> string:
+    def get_post_classification_template(self) -> str:
         pass
