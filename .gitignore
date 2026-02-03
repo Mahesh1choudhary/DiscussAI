@@ -4,3 +4,8 @@ app_v1/__pycache__/
 app_v1/controller/__pycache__/
 app_v1/config/secret_config.env
 DiscussAI.iml
+
+
+# Python cache
+__pycache__/
+*.py[cod]
