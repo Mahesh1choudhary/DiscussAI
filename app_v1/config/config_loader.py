@@ -2,7 +2,7 @@ from typing import Union
 from enum import Enum
 import os, sys, yaml
 
-from pydantic.v1 import ConfigError
+from pydantic import ConfigError
 from app.config.config_keys import EnvironmentConfigKeys
 
 _CONFIG = {}  # currently for local development only. config_cache is already implemented as per future key-value store migration

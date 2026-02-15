@@ -1,5 +1,12 @@
-fastapi==0.110.0
-uvicorn[standard]==0.29.0
-cachetools
-asyncpg
-sqlalchemy
+fastapi==0.129.0
+uvicorn[standard]==0.40.0
+cachetools==7.0.1
+asyncpg==0.31.0
+sqlalchemy[asyncio]==2.0.46
+instructor==1.14.5
+langchain==1.2.10
+autogen==0.11.0
+autogen-agentchat==0.5.7
+autogen-core==0.5.7
+autogen-ext==0.5.7
+pyautogen==0.9

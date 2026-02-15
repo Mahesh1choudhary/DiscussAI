@@ -13,3 +13,8 @@ class LLMModel(ABC):
     @abstractmethod
     def get_post_classification_template(self) -> str:
         pass
+
+    @abstractmethod
+    def get_model_name(self)->str:
+        pass
+

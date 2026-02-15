@@ -11,7 +11,7 @@ class LLMManager:
 
 
     def set_classification_model(self, model:LLMModel):
-        self._classification_model = model
+        self._classification_model:LLMModel = model
 
 
     def get_classification_model(self) -> LLMModel:
