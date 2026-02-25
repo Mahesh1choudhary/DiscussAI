@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI
 from app_v1.controller.healthcheck_controller import healthcheck_router
+from app_v1.controller.user_controller import user_router
 from app_v1.llm.llm_manager import LLMManager
 from app_v1.llm.gpt51_model import GPT51Model
 
@@ -16,6 +17,7 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     app = FastAPI(lifespan=lifespan)
     app.include_router(healthcheck_router)
+    app.include_router(user_router)
     return app
 
 

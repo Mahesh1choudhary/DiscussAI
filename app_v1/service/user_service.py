@@ -1,15 +1,19 @@
 from pydantic import BaseModel, Field
 
-from app_v1.service.database_service import DatabaseService
+from app_v1.repository.user_repository import UserRepository
 
 class UserCreationRequest(BaseModel):
     user_name:str = Field(..., min_length=3, max_length=50, pattern="^[a-zA-Z0-9_]+$")
+    email:str = Field(..., min_length=3, max_length=50, pattern="^[a-zA-Z0-9_]+$")
 
-class Userservice():
+
+
+
+class UserService():
     def __init__(self):
-        self.database_service = DatabaseService()
+        self.user_repository = UserRepository()
 
 
 
-    def create_new_user(self,):
-        pass
+    def create_new_user(self, user_creation_request: UserCreationRequest):
+         = self.user_repository.find_by_user_name()

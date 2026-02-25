@@ -13,19 +13,19 @@ class BaseDBConfig:
 
 
 @dataclass
-class PostgreSQLDBConfig(BaseDBConfig):
-    """postgreSQL specific configuration"""
-    backend_db: str = "postgresql"
+class PostgresSQLDBConfig(BaseDBConfig):
+    """postgresSQL specific configuration"""
+    backend_db: str = "postgressql"
     batch_size: int = 5000
     max_workers: int = 10
 
-    postgreSQL_db_connection_pool_min = 2
-    postgreSQL_db_connection_pool_max = 5
-    postgreSQL_db_db_name: str = ""
-    postgreSQL_db_user: str = ""
-    postgreSQL_db_password: str = ""
-    postgreSQL_db_host: str = ""
-    postgreSQL_db_port: str = ""
+    postgresSQL_db_connection_pool_min = 2
+    postgresSQL_db_connection_pool_max = 5
+    postgresSQL_db_db_name: str = ""
+    postgresSQL_db_user: str = ""
+    postgresSQL_db_password: str = ""
+    postgresSQL_db_host: str = ""
+    postgresSQL_db_port: str = ""
 
 
 
@@ -34,7 +34,7 @@ class DBConfigFactory:
     """ Factory for creating backend-specific db configurations """
 
     _config_classes: Dict[str, type] = {
-        "postgreSQL": PostgreSQLDBConfig,
+        "postgresSQL": PostgresSQLDBConfig,
     }
 
     @classmethod
