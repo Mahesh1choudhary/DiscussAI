@@ -11,3 +11,5 @@ autogen-core==0.5.7
 autogen-ext==0.5.7
 pyautogen==0.9
 praw==7.7.1
+email-validator>=2.0.0
+psycopg[binary]>=3.2.0

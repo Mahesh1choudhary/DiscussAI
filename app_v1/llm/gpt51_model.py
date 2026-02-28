@@ -16,3 +16,6 @@ class GPT51Model(LLMModel):
 
     def get_post_classification_template(self) -> str:
         return """"""
+
+    def get_model_name(self) ->str:
+        return self.model_name

@@ -1,8 +1,10 @@
 import threading
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, Session
+from collections.abc import Generator
+from contextlib import contextmanager
 
-
+# TODO: add alembic for migrations
 class DatabaseManager():
     _lock = threading.Lock()
     _instance = None
@@ -39,11 +41,23 @@ class DatabaseManager():
     def get_session(self):
         return self.session_local()
 
+    @contextmanager
+    def transaction(self):
+        session = self.session_local()
+        try:
+            yield session
+            session.commit()
+        except Exception:
+            session.rollback()
+            raise
+        finally:
+            session.close()
+
 
 database_manager = DatabaseManager()
 
 
-def get_database_session():
+def get_database_session() -> Generator[Session, None, None]:
     session = database_manager.get_session()
     try:
         yield session
