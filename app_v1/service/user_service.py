@@ -1,5 +1,5 @@
 from app_v1.models.request_models.user_creation_request import UserCreationRequest
-from app_v1.database.database_models.user_model import User
+from app_v1.models.database_models.user_model import User
 from app_v1.repository.user_repository import UserRepository
 from app_v1.database.database_manager import DatabaseManager
 

@@ -27,12 +27,25 @@ The system uses a Large Language Model (LLM) for semantic understanding and is d
 |-----|-----------|
 | Language | Python 3.10+ |
 | API Framework | FastAPI |
-| LLM | GPT (OpenAI API) |
-| Metadata Store | PostgreSQL (Aiven) |
+| HTTP Client | httpx |
+| LLM | GPT-5.1 (OpenAI API) |
+| Metadata Store | PostgreSQL (Aiven - 1GB Basic) |
 | Database Driver | psycopg2 |
-| ORM | SQLAlchemy |
-| Config | Pydantic & YAML |
+| ORM | SQLAlchemy 2.0+ |
+| Data Validation | Pydantic v2 |
+| Config Management | YAML + Pydantic |
 | Logging | Python logging |
+| Vector Embeddings | OpenAI Embeddings API (optional) |
+| Data Fetching | Custom scrapers (Reddit, LeetCode) |
+
+### 3.1 Key Dependencies
+- **FastAPI**: REST API framework with built-in validation and OpenAPI docs
+- **SQLAlchemy**: Type-safe ORM with support for complex queries
+- **Pydantic v2**: Data validation and serialization with strong type support
+- **httpx**: Async HTTP client for external API calls (LLM, data sources)
+- **psycopg2**: PostgreSQL driver optimized for production workloads
+- **PyYAML**: Configuration management with environment-specific overrides
+- **python-logging**: Structured logging for debugging and monitoring
 
 ## 4. Database Architecture
 
@@ -42,20 +55,34 @@ The system uses a Large Language Model (LLM) for semantic understanding and is d
   - Eliminates database administration overhead
   - Automatic backups and high availability
   - Connection pooling built-in
-  - Scalable and production-ready from day one
+  - Cost-effective for MVP phase
   - Easy migration path for production deployment
 
-### 4.2 Connection Management
+### 4.2 Storage Considerations
+- **Current Capacity**: 1 GB
+- **MVP Data Scope**: 
+  - Discussion posts metadata (text summaries, not full content)
+  - User profiles
+  - Classification results
+  - Embeddings cache (optional, for vector search optimization)
+- **Scaling Strategy**: 
+  - Aiven allows seamless upgrade to higher tiers
+  - Monitor storage usage during MVP phase
+  - Implement data archival/cleanup policies if needed
+  - Consider partitioning strategies as dataset grows
+
+### 4.3 Connection Management
 - **Connection Pooling**: Configured via Aiven connection parameters
 - **Configuration**: Environment-based YAML config for database credentials
 - **SSL/TLS**: Enabled by default for secure communication with Aiven
+- **Max Connections**: Aiven basic plan supports up to 25 concurrent connections
 
-### 4.3 Database Schema
+### 4.4 Database Schema
 PostgreSQL is used to store:
-- Discussion posts metadata
-- User information
-- Classification results
-- Caching/embeddings (future)
+- Discussion posts metadata (indexed for fast retrieval)
+- User information (with auth tokens if needed)
+- Classification results and metadata
+- Post embeddings (optional, for similarity search)
 
 ## 5. Data Layer Architecture
 

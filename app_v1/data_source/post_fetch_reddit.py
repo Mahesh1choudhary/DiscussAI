@@ -1,13 +1,13 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional
 
-from app_v1.data_fetch.post_fetch_base_class import FetchConfig, PostFetchBaseClass
+from app_v1.data_source.data_source_base_class import DataSourceConfig, DataSourceBaseClass
 from app_v1.config.config_loader import fetch_key_value
 from app_v1.config.config_keys import RedditConfigKeys
 import praw
 
 
-class RedditFetchConfig(FetchConfig):
+class RedditFetchConfig(DataSourceConfig):
     """
     Configs related to post fetching from reddit
     Attributes:
@@ -25,7 +25,7 @@ class RedditFetchConfig(FetchConfig):
 
 
 
-class RedditPostFetch(PostFetchBaseClass):
+class RedditPostFetch(DataSourceBaseClass):
     def __init__(self):
         config = RedditFetchConfig(
             client_id=fetch_key_value(RedditConfigKeys.CLIENT_ID),
